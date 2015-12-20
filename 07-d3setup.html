@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
     <title>Software Carpentry: D3 setup</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
-    <link rel="stylesheet" type="text/css" href="css/swc.css" />
-    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
-    <meta charset="UTF-8" />
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body class="lesson">
     <div class="container card">
-      <div class="banner">
-        <a href="http://software-carpentry.org" title="Software Carpentry">
-          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
-        </a>
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
       </div>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -29,7 +29,7 @@
           <h2 class="subtitle">Setting up html for our data visualisation</h2>
 <div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives" class="objectives panel panel-warning"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -43,7 +43,7 @@
 <p>The main purpose of D3 is to create visualisations of data online. Because it uses JavaScript, it is possible to make graphs interactive!</p>
 <p>As a little refresher, we will repeat a little bit html to set up our page.</p>
 <p>Create a new GitHub repository and create a gh-pages branch to which you commit. This is, where our actual page will live. Then create <code>index.html</code> in the new repository containing the following:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span>
 <span class="kw">&lt;html&gt;</span>
   <span class="kw">&lt;head&gt;</span>
     <span class="kw">&lt;title&gt;</span>The Wealth <span class="er">&amp;</span> Health of Nations<span class="kw">&lt;/title&gt;</span>
@@ -58,16 +58,15 @@
     <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;http://d3js.org/d3.v3.min.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
     <span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;main.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span>
   <span class="kw">&lt;/body&gt;</span>
-<span class="kw">&lt;/html&gt;</span></code></pre>
+<span class="kw">&lt;/html&gt;</span></code></pre></div>
 <p>There are a few things in this file that look new: <code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;main.css&quot; /&gt;</code> is linking the local CSS file <code>main.css</code>(that can just be an empty file for now). <code>&lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;</code> is linking the JavaScript file, the file in which all the action will happen.</p>
 <p>Additionally, we now need to link d3 using <code>&lt;script src=&quot;http://d3js.org/d3.v3.min.js&quot;&gt;&lt;/script&gt;</code>. The order matters. Since code is executed sequentially and we want to use parts of the D3 library in our own script, we have to link to d3.js first.</p>
 <p>The last bit, that's important here is an HTML element (paragraph) we create. We give it an id <code>chart_area</code>. This is the area we reserve for our pretty chart. We will use JavaScript (and D3) to fill it in.</p>
 <p>Now, let's write main.js.</p>
 <p>Similar to the syntax we've already seen (<code>JSON.stringify</code>), D3-specific functions can be called using a <code>d3.</code>-syntax.</p>
-
-<p>The first thing we need, is of course our data, which we can find at <a href="https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json">https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json</a>. D3 provides a handy function to read in <code>json</code>-files:
+<p>The first thing we need, is of course our data, which we can find at 'https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json'. D3 provides a handy function to read in <code>json</code>-files:</p>
 <pre class="d3"><code>var dataUrl = &quot;https://raw.githubusercontent.com/IsaKiko/D3-visualising-data/gh-pages/code/nations.json&quot;;
-d3.json(dataUrl, function(nations) { })</code></pre>
+d3.json(dataUrl, function(nations) { }</code></pre>
 <p>This line probably needs a little explanation and we'll go through it bit by bit:</p>
 <ul>
 <li><code>d3.json()</code> is called the function call. In this case, we have a function that reads in a json file, parses it, and is also able to do something with the parsed data on the way.</li>
@@ -78,7 +77,7 @@ d3.json(dataUrl, function(nations) { })</code></pre>
 </ul>
 <div id="what-else-can-i-read-in-conveniently" class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>What else can I read in conveniently?</h2>
+<h2 id="what-else-can-i-read-in-conveniently" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>What else can I read in conveniently?</h2>
 </div>
 <div class="panel-body">
 <p>D3 offers the possibility to also read in csv (comma-separated values) files directly. See <a href="https://github.com/mbostock/d3/wiki/CSV">here</a> for an example. Also available are functions to read in tab-separated values (tsv) and files with arbitrary delimiter (dsv).</p>
@@ -95,7 +94,7 @@ d3.json(dataUrl, function(nations) { })</code></pre>
 <p><img src="img/chart_area.png" alt="What we want.." width="700" /></p>
 <p>We already set up our HTML page to contain a chart area. That's the space we want to fill now. We'll have a picture frame (an SVG-element), our drawing area (a g-element), and in that drawing area, we'll have separate elements for both axes and the area for our circles.</p>
 <p>What we now want to end up with in our html document is this:</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;chart_area&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;svg&gt;</span> <span class="kw">&lt;/svg&gt;</span> <span class="kw">&lt;/p&gt;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;chart_area&quot;</span><span class="kw">&gt;</span> <span class="kw">&lt;svg&gt;</span> <span class="kw">&lt;/svg&gt;</span> <span class="kw">&lt;/p&gt;</span></code></pre></div>
 <p>But this time, we want to create these elements automatically using JavaScript only. First, we need to link the JavaScript and HTML environment so that we have writing access to the HTML. To do this, we use the <code>.select()</code>. This lets us grab an element by specifying its ID.</p>
 <pre class="js"><code>// Select the chart area by ID 
 var chart_area = d3.select(&quot;#chart_area&quot;);</code></pre>
@@ -121,7 +120,7 @@ frame.attr(&quot;height&quot;, frame_height);</code></pre>
 canvas.attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;,&quot; + margin.top + &quot;)&quot;);</code></pre>
 <div id="adding-svgs-from-javascript-file" class="challenge panel panel-success">
 <div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>Adding SVGs from JavaScript file</h1>
+<h1 id="adding-svgs-from-javascript-file" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Adding SVGs from JavaScript file</h1>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
@@ -133,15 +132,15 @@ canvas.attr(&quot;transform&quot;, &quot;translate(&quot; + margin.left + &quot;
 </div>
         </div>
       </div>
-      <div class="footer">
-        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
-        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
-        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
-        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
       </div>
     </div>
-    <!-- Javascript placed at the end of the document so the pages load faster -->
-    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>

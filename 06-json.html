@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
     <title>Software Carpentry: JSON</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
-    <link rel="stylesheet" type="text/css" href="css/swc.css" />
-    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
-    <meta charset="UTF-8" />
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body class="lesson">
     <div class="container card">
-      <div class="banner">
-        <a href="http://software-carpentry.org" title="Software Carpentry">
-          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
-        </a>
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
       </div>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -29,7 +29,7 @@
           <h2 class="subtitle">Everything is strings!</h2>
 <div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives" class="objectives panel panel-warning"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -61,7 +61,7 @@
 };</code></pre>
 <div id="creating-new-attributes" class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Creating new attributes</h2>
+<h2 id="creating-new-attributes" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Creating new attributes</h2>
 </div>
 <div class="panel-body">
 <p>You can append the list of attributes using the dot-syntax <code>cat_object.attributename = ...</code>, (<code>attributename</code> is a placeholder). Create a new attribute <code>height</code> and assign a number!</p>
@@ -73,7 +73,7 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 <p>This process is called 'nesting'.</p>
 <div id="nesting" class="challenge panel panel-success">
 <div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>Nesting</h1>
+<h1 id="nesting" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Nesting</h1>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
@@ -85,7 +85,7 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 </div>
 <div id="object-space-and-name-space" class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>Object space and name space</h2>
+<h2 id="object-space-and-name-space" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Object space and name space</h2>
 </div>
 <div class="panel-body">
 <p>Instead of pushing a new cat to the list, what happens if we initiate the list using cat_object twice?</p>
@@ -100,7 +100,7 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 <p>In Javascript, we have a name space and an object space. The name space contains the names of the variables, the object space contains the actual content. Normally, you would assume that each name points to one object (<code>cat_object.weight</code> --&gt; <code>5</code>, <code>cat_object.name</code> --&gt; 'Princess Caroline'). What we did, when we created our list is that we used three names to point to the same object (<code>cat_list[0]</code>, <code>cat_list[1]</code>, <code>cat_object</code> --&gt; <code>{weight = 5 , past_weight_values = [4.5, 5.1, 4.9], name = 'Princess Caroline'}</code>). When we changed the name of <code>cat_list2[0]</code>, what we actually did was changing the content of the one object <code>cat_object</code> that they were all pointing to.</p>
 <p><img src="img/namespace.png" alt="Name space and object space" width="500" /></p>
 <p>A good way of creating a new array (as in a new object, not just a new name for the same one) that relates to an array we already have can be done using the <code>map()</code> function.</p>
-<p>As an example, we can create a list of dogs that have the same names as our cats, only appended by &quot;Doggie&quot;.</p>
+<p>As an example, we can create a list of dogs that have the same names as our cats, only appended by &quot;Doggie &quot;.</p>
 <pre class="js"><code>dog_list = cat_list.map(function(cat) {
     return {
         name: &quot;Doggie &quot;+ cat.name
@@ -109,10 +109,10 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 <p>When the map function is called using <code>cat_list.map</code>, it loops through all elements in <code>cat_list</code>, calls each temporarily <code>cat</code>, and creates a new list <code>dog_list</code>, which will have one dog per cat. We join the two strings with a simple <code>+</code>.</p>
 <div id="how-much-do-dogs-weigh" class="challenge panel panel-success">
 <div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>How much do dogs weigh?</h1>
+<h1 id="how-much-do-dogs-weigh" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>How much do dogs weigh?</h1>
 </div>
 <div class="panel-body">
-<p>Let's assume dogs weigh twice as much as their feline versions. Make the new array reflect this.</p>
+<p>Let's assume our dogs weigh twice as much as their feline versions. Make the new array reflect this.</p>
 </div>
 </div>
 <p>When we start creating our data for the plot, this is the structured (and nicely annotated) data format that we want. In order to store our variable outside of the scripting environment, we need to convert it into a string.</p>
@@ -126,7 +126,7 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 <p>We could now copy this string and save it manually in a <code>.json</code> file.</p>
 <div id="de-stringify" class="challenge panel panel-success">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pencil"></span>De-stringify</h2>
+<h2 id="de-stringify" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>De-stringify</h2>
 </div>
 <div class="panel-body">
 <p>Let's assume we read in a JSON formatted string from a file and want to retrieve the nice structure. This process is called parsing and we can use the JSON.parse() function. Convert the variable <code>cat_json</code> back and store it in a container called <code>new_cat_list</code>.</p>
@@ -167,15 +167,15 @@ cat_list.push({weight : 6 , past_weight_values : [5.9, 5.3, 6.1], name : &#39;Sn
 ]</code></pre>
         </div>
       </div>
-      <div class="footer">
-        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
-        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
-        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
-        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
       </div>
     </div>
-    <!-- Javascript placed at the end of the document so the pages load faster -->
-    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>

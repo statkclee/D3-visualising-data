@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
     <title>Software Carpentry: D3 - Transitions</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
-    <link rel="stylesheet" type="text/css" href="css/swc.css" />
-    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
-    <meta charset="UTF-8" />
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body class="lesson">
     <div class="container card">
-      <div class="banner">
-        <a href="http://software-carpentry.org" title="Software Carpentry">
-          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
-        </a>
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
       </div>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -29,7 +29,7 @@
           <h2 class="subtitle">Move it!</h2>
 <div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives" class="objectives panel panel-warning"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -41,7 +41,7 @@
 </div>
 <p>At the moment, the year that we are looking at in the data is hardcoded. Naturally, we want the user to be able to see how the data changes over time.</p>
 <p>Let's do this a slider. The first thing we need is add this slider to the user interface (our website). A slider element is actually an <code>input</code> element with the the type <code>range</code>. We give it a ID in order to be able to select is from our JavaScript script, a class to style it (if we choose to), and a minimum, maximum, and step size that depend on our data. <code>value</code> is what we read out in order to know the position of the slider. Let's initialise it somewhere in the middle (1979).</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;range&quot;</span><span class="ot"> name=</span><span class="st">&quot;range&quot;</span><span class="ot"> class=</span><span class="st">&quot;slider&quot;</span><span class="ot"> id=</span><span class="st">&quot;year_slider&quot;</span><span class="ot"> value=</span><span class="st">&quot;1979&quot;</span><span class="ot"> min=</span><span class="st">&quot;1950&quot;</span><span class="ot"> max=</span><span class="st">&quot;2008&quot;</span><span class="ot"> step=</span><span class="st">&quot;1&quot;</span> <span class="kw">&gt;&lt;br&gt;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;range&quot;</span><span class="ot"> name=</span><span class="st">&quot;range&quot;</span><span class="ot"> class=</span><span class="st">&quot;slider&quot;</span><span class="ot"> id=</span><span class="st">&quot;year_slider&quot;</span><span class="ot"> value=</span><span class="st">&quot;1979&quot;</span><span class="ot"> min=</span><span class="st">&quot;1950&quot;</span><span class="ot"> max=</span><span class="st">&quot;2008&quot;</span><span class="ot"> step=</span><span class="st">&quot;1&quot;</span> <span class="kw">&gt;&lt;br&gt;</span></code></pre></div>
 <p>In our script, we now want the year to be a variable, so we need to initialise it. Because the value is a string, we need to parse it to an integer using <code>parseInt()</code>. To get the index (rather than the actual year), we can simply subtract the first year 1950.</p>
 <pre class="js"><code>var year_idx = parseInt(document.getElementById(&quot;year_slider&quot;).value)-1950;</code></pre>
 <p>Updating the year becomes quite simple. All we need to do is add another event listener that changes the year the moment we touch the slider. The event we want to listen for is called <code>input</code>. We then execute the <code>update()</code> function we wrote earlier.</p>
@@ -61,7 +61,7 @@ dot.transition().ease(&quot;linear&quot;).duration(200)
                 .attr(&quot;r&quot;, function(d) { return rScale(d.population[year_idx]); });</code></pre>
 <div id="other-transition-functions-you-might-want" class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>Other transition functions you might want</h2>
+<h2 id="other-transition-functions-you-might-want" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>Other transition functions you might want</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -75,7 +75,7 @@ dot.transition().ease(&quot;linear&quot;).duration(200)
 </div>
 <div id="play-time" class="challenge panel panel-success">
 <div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>Play time</h1>
+<h1 id="play-time" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Play time</h1>
 </div>
 <div class="panel-body">
 <p>D3 is incredible versatile. Try out different transitions and if you have time, maybe try drawing rectangles instead of circles.</p>
@@ -94,7 +94,7 @@ dot.transition().ease(&quot;linear&quot;).duration(200)
             .on(&quot;mouseout&quot;, function(){return tooltip.style(&quot;visibility&quot;, &quot;hidden&quot;);});</code></pre>
 <div id="we-have-used-some-special-objects-given-to-us-by-the-browser" class="callout panel panel-info">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-pushpin"></span>We have used some special objects given to us by the browser</h2>
+<h2 id="we-have-used-some-special-objects-given-to-us-by-the-browser" class="callout panel panel-info"><span class="glyphicon glyphicon-pushpin"></span>We have used some special objects given to us by the browser</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -151,7 +151,7 @@ var filtered_reg_nations = region_data.map(function(region) { return region;});<
 }</code></pre>
 <div id="the-master-challenge" class="challenge panel panel-success">
 <div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>The master challenge</h1>
+<h1 id="the-master-challenge" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>The master challenge</h1>
 </div>
 <div class="panel-body">
 <p>It's time to put together everything you've learned. Write code that displays (and updates) the mean values that we just computed as little crosses in the graph for the different regions.</p>
@@ -159,7 +159,7 @@ var filtered_reg_nations = region_data.map(function(region) { return region;});<
 </div>
 <div id="style" class="challenge panel panel-success">
 <div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>...style!</h1>
+<h1 id="style" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>...style!</h1>
 </div>
 <div class="panel-body">
 <p>Add axis labels and make the fonts pretty.</p>
@@ -167,25 +167,26 @@ var filtered_reg_nations = region_data.map(function(region) { return region;});<
 </div>
 <div id="using-different-data-formats" class="challenge panel panel-success">
 <div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>Using different data formats</h1>
+<h1 id="using-different-data-formats" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Using different data formats</h1>
 </div>
 <div class="panel-body">
 <p>What if you don't have your data in JSON format? Change your code to load in nations.csv instead of nations.json and have it produce the same plot.</p>
 </div>
 </div>
 <p>By the end of this lesson, your page should look something like this:</p>
-<iframe src="http://isakiko.github.io/D3-visualising-data/code/index10.html" width="1000" height="600"></iframe>
+<iframe src="http://isakiko.github.io/D3-visualising-data/code/index10.html" width="1000" height="600">
+</iframe>
         </div>
       </div>
-      <div class="footer">
-        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
-        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
-        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
-        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
       </div>
     </div>
-    <!-- Javascript placed at the end of the document so the pages load faster -->
-    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>

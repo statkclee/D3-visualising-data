@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <meta name="generator" content="pandoc">
     <title>Software Carpentry: D3 - Add and remove</title>
-    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
-    <link rel="stylesheet" type="text/css" href="css/swc.css" />
-    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
-    <meta charset="UTF-8" />
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css" />
+    <link rel="stylesheet" type="text/css" href="css/swc.css" />
+    <link rel="alternate" type="application/rss+xml" title="Software Carpentry Blog" href="http://software-carpentry.org/feed.xml"/>
+    <meta charset="UTF-8" />
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
   </head>
   <body class="lesson">
     <div class="container card">
-      <div class="banner">
-        <a href="http://software-carpentry.org" title="Software Carpentry">
-          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
-        </a>
+      <div class="banner">
+        <a href="http://software-carpentry.org" title="Software Carpentry">
+          <img alt="Software Carpentry banner" src="img/software-carpentry-banner.png" />
+        </a>
       </div>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -29,7 +29,7 @@
           <h2 class="subtitle">Dynamically adding and removing data points</h2>
 <div id="learning-objectives" class="objectives panel panel-warning">
 <div class="panel-heading">
-<h2><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
+<h2 id="learning-objectives" class="objectives panel panel-warning"><span class="glyphicon glyphicon-certificate"></span>Learning Objectives</h2>
 </div>
 <div class="panel-body">
 <ul>
@@ -46,7 +46,7 @@
 });</code></pre>
 <div id="filtering-by-region" class="challenge panel panel-success">
 <div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>Filtering by region</h1>
+<h1 id="filtering-by-region" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Filtering by region</h1>
 </div>
 <div class="panel-body">
 <p>You might have noticed that our data contains information about the region in which a country is.</p>
@@ -58,7 +58,7 @@
 <p>We have now hard-coded a criterion for the data we want to display. Naturally, we might want to change what data gets displayed interactively using elements on our page. Let's create some checkboxes that let us add and remove the regions that we want to include. To do this, we will have to switch back to our HTML file for a while.</p>
 <p>Now, instead of displaying all the data all the time, we want to be able to choose which data we display. We will create a checkbox for each region and only display the data for the regions that are checked.</p>
 <p>Checkboxes will need to be added to the HTML page. Since we want to add and remove data, we'll have to add a checkbox for each region like the following one. Checkbox elements are actually <code>input</code> elements with type <code>checkbox</code>. Initially, we want all checkboxes to be checked. We do this by setting the <code>checked</code> attribute of the element to 'checked'.</p>
-<pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;label&gt;&lt;input</span><span class="ot"> type=</span><span class="st">&quot;checkbox&quot;</span><span class="ot"> name=</span><span class="st">&quot;region&quot;</span><span class="ot"> class=</span><span class="st">&quot;region_cb&quot;</span><span class="ot"> value=</span><span class="st">&quot;Sub-Saharan Africa&quot;</span><span class="ot"> checked=</span><span class="st">&quot;checked&quot;</span><span class="kw">/&gt;</span> Sub-Saharan Africa<span class="kw">&lt;/label&gt;</span></code></pre>
+<div class="sourceCode"><pre class="sourceCode html"><code class="sourceCode html"><span class="kw">&lt;label&gt;&lt;input</span><span class="ot"> type=</span><span class="st">&quot;checkbox&quot;</span><span class="ot"> name=</span><span class="st">&quot;region&quot;</span><span class="ot"> class=</span><span class="st">&quot;region_cb&quot;</span><span class="ot"> value=</span><span class="st">&quot;Sub-Saharan Africa&quot;</span><span class="ot"> checked=</span><span class="st">&quot;checked&quot;</span><span class="kw">/&gt;</span> Sub-Saharan Africa<span class="kw">&lt;/label&gt;</span></code></pre></div>
 <p>The next step is to add an event listener to the JavaScript file. Luckily, D3 provides us with some nice options. The <code>value</code> needs to be set to the region, because this is the value we want to filter our data by later.</p>
 <pre class="js"><code>d3.selectAll(&quot;.region_cb&quot;).on(&quot;change&quot;, function () { &lt;--- stuff happens here ---&gt; });</code></pre>
 <p>This line listens to all checkboxes that have the class <code>region_cb</code>. Every time a checkbox's status changes from checked to unchecked or unchecked to checked, the following function is executed.</p>
@@ -79,7 +79,7 @@
 <p>A good, brief explanation of this linking between data and elements on the page can be found <a href="http://bost.ocks.org/mike/join/">here</a>. This article discusses the three important functions used for this: <code>enter</code>, <code>exit</code>, and a third function <code>update</code> that we will get to shortly.</p>
 <div id="removing-elements" class="challenge panel panel-success">
 <div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>Removing elements</h1>
+<h1 id="removing-elements" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Removing elements</h1>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
@@ -113,7 +113,7 @@
 <p>In order to create the plot when we first load the page, we will also have to call <code>update()</code> outside of our event listeners once.</p>
 <div id="another-new-dimension" class="challenge panel panel-success">
 <div class="panel-heading">
-<h1><span class="glyphicon glyphicon-pencil"></span>Another new dimension</h1>
+<h1 id="another-new-dimension" class="challenge panel panel-success"><span class="glyphicon glyphicon-pencil"></span>Another new dimension</h1>
 </div>
 <div class="panel-body">
 <ol style="list-style-type: decimal">
@@ -122,18 +122,19 @@
 </div>
 </div>
 <p>By the end of this lesson, your page should look something like this:</p>
-<iframe src="http://isakiko.github.io/D3-visualising-data/code/index09.html" width="1000" height="600"></iframe>
+<iframe src="http://isakiko.github.io/D3-visualising-data/code/index09.html" width="1000" height="600">
+</iframe>
         </div>
       </div>
-      <div class="footer">
-        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
-        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
-        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
-        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
+      <div class="footer">
+        <a class="label swc-blue-bg" href="http://software-carpentry.org">Software Carpentry</a>
+        <a class="label swc-blue-bg" href="https://github.com/swcarpentry/lesson-template">Source</a>
+        <a class="label swc-blue-bg" href="mailto:admin@software-carpentry.org">Contact</a>
+        <a class="label swc-blue-bg" href="LICENSE.html">License</a>
       </div>
     </div>
-    <!-- Javascript placed at the end of the document so the pages load faster -->
-    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
+    <!-- Javascript placed at the end of the document so the pages load faster -->
+    <script src="http://software-carpentry.org/v5/js/jquery-1.9.1.min.js"></script>
     <script src="css/bootstrap/bootstrap-js/bootstrap.js"></script>
   </body>
 </html>
